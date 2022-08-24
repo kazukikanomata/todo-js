@@ -19,6 +19,28 @@ const onClickAdd = () => {
   completeButton.addEventListener("click", () => {
     // 押された完了ボタンの親タグを未完了リストから削除
     deleteFromIncompleteList(completeButton.parentNode);
+    // 完了リストに追加する要素
+    const addTarget = completeButton.parentNode;
+    // リストの一個目の内側のテキストを取得する
+    const text = addTarget.firstElementChild.innerText;
+
+    // div以下を初期化する
+    addTarget.textContent = null;
+
+    // liタグをセイセイ
+    const li = document.createElement("li");
+    li.innerText = text;
+
+    // buttonタグをセイセイ
+    const backButton = document.createElement("button");
+    backButton.innerText = "戻す";
+
+    // divタグの要素かく
+    addTarget.appendChild(li);
+    addTarget.appendChild(backButton);
+
+    // 完了リストに追加
+    document.getElementById("complete-list").appendChild(addTarget);
   });
 
   const deleteButton = document.createElement("button");
